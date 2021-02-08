@@ -1,0 +1,118 @@
+function PlanarPolygonAreaMeters2(points) {
+    var a = 0.0;
+    for (var i = 0; i < points.length; ++i) {
+        var j = (i + 1) % points.length;
+        var xi = points[i].lng() * metersPerDegree * Math.cos(points[i].lat() * radiansPerDegree);
+        var yi = points[i].lat() * metersPerDegree;
+        var xj = points[j].lng() * metersPerDegree * Math.cos(points[j].lat() * radiansPerDegree);
+        var yj = points[j].lat() * metersPerDegree;
+        a += xi * yj - xj * yi
+    }
+    return Math.abs(a / 2.0)
+}
+
+function Areas(areaMeters2) {
+    var areaHectares = areaMeters2 / meters2PerHectare;
+    var areaKm2 = areaMeters2 / metersPerKm / metersPerKm;
+    var areaFeet2 = areaMeters2 * feetPerMeter * feetPerMeter;
+    var areaMiles2 = areaFeet2 / feetPerMile / feetPerMile;
+    var areaAcres = areaMiles2 * acresPerMile2;
+    return areaMeters2.toFixed(2)
+}
+
+function Areaskm(areaMeters2) {
+    var areaHectares = areaMeters2 / meters2PerHectare;
+    var areaKm2 = areaMeters2 / metersPerKm / metersPerKm;
+    var areaFeet2 = areaMeters2 * feetPerMeter * feetPerMeter;
+    var areaMiles2 = areaFeet2 / feetPerMile / feetPerMile;
+    var areaAcres = areaMiles2 * acresPerMile2;
+    return areaKm2.toFixed(2) 
+}
+function Areasacre(areaMeters2) {
+    var areaHectares = areaMeters2 / meters2PerHectare;
+    var areaKm2 = areaMeters2 / metersPerKm / metersPerKm;
+    var areaFeet2 = areaMeters2 * feetPerMeter * feetPerMeter;
+    var areaMiles2 = areaFeet2 / feetPerMile / feetPerMile;
+    var areaAcres = areaMiles2 * acresPerMile2;
+    return areaAcres.toFixed(2)
+}
+
+function Areashectare(areaMeters2) {
+    var areaHectares = areaMeters2 / meters2PerHectare;
+    var areaKm2 = areaMeters2 / metersPerKm / metersPerKm;
+    var areaFeet2 = areaMeters2 * feetPerMeter * feetPerMeter;
+    var areaMiles2 = areaFeet2 / feetPerMile / feetPerMile;
+    var areaAcres = areaMiles2 * acresPerMile2;
+    return areaHectares.toFixed(2)
+}
+
+function Areasfeet(areaMeters2) {
+    var areaHectares = areaMeters2 / meters2PerHectare;
+    var areaKm2 = areaMeters2 / metersPerKm / metersPerKm;
+    var areaFeet2 = areaMeters2 * feetPerMeter * feetPerMeter;
+    var areaMiles2 = areaFeet2 / feetPerMile / feetPerMile;
+    var areaAcres = areaMiles2 * acresPerMile2;
+    areaAcres = areaAcres * 43560;
+    return areaAcres.toFixed(2)
+}
+
+function AreasNatMiles(areaMeters2) {
+    var areaHectares = areaMeters2 / meters2PerHectare;
+    var areaKm2 = areaMeters2 / metersPerKm / metersPerKm;
+    var areaFeet2 = areaMeters2 * feetPerMeter * feetPerMeter;
+    var areaMiles2 = areaFeet2 / feetPerMile / feetPerMile;
+    var areaAcres = areaMiles2 * acresPerMile2;
+    return (areaKm2 * 0.291181).toFixed(2)
+}
+
+function Areasyard(areaMeters2) {
+    var areaHectares = areaMeters2 / meters2PerHectare;
+    var areaKm2 = areaMeters2 / metersPerKm / metersPerKm;
+    var areaFeet2 = areaMeters2 * feetPerMeter * feetPerMeter;
+    var areaMiles2 = areaFeet2 / feetPerMile / feetPerMile;
+    var areaAcres = areaMiles2 * acresPerMile2;
+    areaAcres = areaAcres * 43560;
+    var areaYards2 = areaMeters2 * 1.19599;
+    return areaYards2.toFixed(2)
+}
+
+
+google.maps.Polyline.prototype.inKm = function (n) {
+    var a = this.getPath(n),
+        len = a.getLength(),
+        dist = 0;    
+    for (var i = 0; i < len - 1; i++) {
+        dist += a.getAt(i).kmTo(a.getAt(i + 1))
+    }
+    return dist
+};
+google.maps.LatLng.prototype.kmTo = function (a) {
+    var e = Math,
+        ra = e.PI / 180;
+    var b = this.lat() * ra,
+        c = a.lat() * ra,
+        d = b - c;
+    var g = this.lng() * ra - a.lng() * ra;
+    var f = 2 * e.asin(e.sqrt(e.pow(e.sin(d / 2), 2) + e.cos(b) * e.cos(c) * e.pow(e.sin(g / 2), 2)));
+    return f * 6378.137
+};
+
+if (!google.maps.Polygon.prototype.getBounds) {
+
+    google.maps.Polygon.prototype.getBounds = function(latLng) {
+
+            var bounds = new google.maps.LatLngBounds();
+            var paths = this.getPaths();
+            var path;
+           
+            for (var p = 0; p < paths.getLength(); p++) {
+                    path = paths.getAt(p);
+                    for (var i = 0; i < path.getLength(); i++) {
+                            bounds.extend(path.getAt(i));
+                    }
+            }
+
+            return bounds;
+    }
+
+}

@@ -1,0 +1,272 @@
+function initializePolygonMenu(){
+
+	var html = ""+
+	"<div class='context-menu' id='context-menu-polygon'>"+
+		"<div><a onclick='context_deleteArea();'>Delete Overlay</a></div>"+
+		"<div><a onclick='context_rotateArea(1);'>Rotate +1&deg;</a></div>"+
+		"<div><a onclick='context_rotateArea(-1);'>Rotate -1&deg;</a></div>"+
+		"<div><a onclick='context_rotateAreaDialog1();'>Rotate by...</a></div>"+
+		"<div><a onclick='context_selectArea();'>Select as active</a></div>"+
+		"<div><a onclick='context_setAreaLabel();'>Change label</a></div>"+
+		"<div><a onclick='context_setAreaType1();'>Swith to/from cutout</a></div>"+
+	"</div>";
+	
+	$("#map").append(html);
+	
+}
+
+function initializePanelMenu(){
+	var html = ""+
+	"<div class='context-menu' id='context-menu-polygon'>"+
+		"<div><a onclick='context_deleteBox();'>Delete Box</a></div>"+
+		"<div><a onclick='context_rotateBoxDialog1();'>Rotate by...</a></div>"+
+		"<div><a onclick='context_cloneBox();'>Clone Box</a></div>"+
+		"<div><a onclick='context_closeBox();'>Select Box (Use A or S to rotate)</a></div>"+		
+	"</div>";
+	
+	$("#map").append(html);
+	
+}
+
+function polygonMenu(polygon, event){
+	
+	$(".context-menu").css('visibility','hidden');
+	
+	var x = overlay.getProjection().fromLatLngToContainerPixel(event.latLng).x;
+	var y = overlay.getProjection().fromLatLngToContainerPixel(event.latLng).y;
+	if (x > map.getDiv().offsetWidth - 120) { x = map.getDiv().offsetWidth - 120 }
+    if (y > map.getDiv().offsetHeight - 100) { y = map.getDiv().offsetHeight - 100 }
+	
+    polygon_context_menu = polygon.index;
+    
+    $("#context-menu-polygon").css('top',y).css('left',x).css('visibility','visible');
+    
+}
+
+var selectedBox = null;
+function boxMenu(box, event){
+	
+	$(".context-menu").css('visibility','hidden');
+	selectedBox = box;
+	
+	var x = overlay.getProjection().fromLatLngToContainerPixel(event.latLng).x;
+	var y = overlay.getProjection().fromLatLngToContainerPixel(event.latLng).y;
+	if (x > map.getDiv().offsetWidth - 120) { x = map.getDiv().offsetWidth - 120 }
+    if (y > map.getDiv().offsetHeight - 100) { y = map.getDiv().offsetHeight - 100 }
+	
+    $("#context-menu-polygon").css('top',y).css('left',x).css('visibility','visible');
+    
+}
+
+function context_closeBox()
+{
+	$(".context-menu").css('visibility','hidden');
+}
+function context_deleteBox() {
+	$(".context-menu").css('visibility','hidden');
+	selectedBox.setMap(null);
+}
+function context_rotateBoxDialog1() {
+	$(".context-menu").css('visibility','hidden');
+	var angle = prompt("How much to rotate in degrees?");
+	rotatePolygon( selectedBox, angle);
+	
+}
+function context_cloneBox() {
+	$(".context-menu").css('visibility','hidden');
+	createBox(selectedBox.getBounds().getSouthWest(), selectedBox.getBounds().getNorthEast() );
+}
+
+function context_setAreaLabel(){
+	
+	$(".context-menu").css('visibility','hidden');
+	setAreaLabelDialog(polygon_context_menu);
+}
+
+function context_setAreaType1(){
+	context_setAreaType(polygon_context_menu);
+}
+
+function context_setAreaType(poly){
+	
+	$(".context-menu").css('visibility','hidden');
+	if(areacontainer_types[poly] == 'ADD'){
+		areacontainer_types[poly] = 'SUB';
+	}else{
+		areacontainer_types[poly] = 'ADD';
+	}
+	
+	display();
+}
+
+function context_selectArea(){
+	
+	$(".context-menu").css('visibility','hidden');
+	setActiveArea(polygon_context_menu);
+
+//	var polygonX = areacontainer[areacontainer_current];
+	
+//	polygonX['angle'] = parseInt( document.getElementById('angelPanels') );
+//	polygonX['pitch'] = parseInt( document.getElementById('roofPitch') );
+	
+}
+
+function context_deleteArea(){
+	
+	$(".context-menu").css('visibility','hidden');
+	deleteArea(polygon_context_menu);
+	
+}
+
+function context_rotateArea(poly, angle){
+	
+	//$(".context-menu").css('visibility','hidden');
+	rotatePoly(poly, getPolygonCenter(poly), angle)
+	
+}
+
+function context_rotateAreaDialog1(){
+	context_rotateAreaDialog(polygon_context_menu);
+}
+
+function context_rotateAreaDialog(poly){
+	
+	$(".context-menu").css('visibility','hidden');
+	$("#rotate-dialog").dialog({
+		  width:350,
+	      buttons : {
+	        "Rotate" : function() {
+	        	var angle = $('#angle').val();
+	        	var dir = $('#dir').val();
+	        	if($('#angle').val() == ''){
+	        		alert('Please enter an angle');
+	        		return;
+	        	}
+	        	if(dir == 'cc'){
+	        		angle = parseFloat(angle)* -1;
+	        	}
+	        	context_rotateArea(poly, angle);
+	        	$(this).dialog("close");
+	        },
+	        "Cancel" : function() {
+	          $(this).dialog("close");
+	        }
+	      },
+			open: function() {
+			    $("#rotate-dialog").keypress(function(e) {
+			      if (e.keyCode == $.ui.keyCode.ENTER) {
+			        $(this).parent().find("button:eq(0)").trigger("click");
+			      }
+			    });
+			  }
+	    });
+
+	    $("#rotate-dialog").dialog("open");
+	    return false;
+}
+
+
+function initializeMarkerMenu(){
+
+	var html = ""+
+	"<div class='context-menu' id='context-menu-marker'>"+
+		"<div><a onclick='context_deletePoint();'>Delete Point</a></div>"+
+	"</div>";
+	
+	$("#map").append(html);
+	
+}
+
+
+function markerMenu(marker, event){
+	
+	$(".context-menu").css('visibility','hidden');
+	
+	var x = overlay.getProjection().fromLatLngToContainerPixel(event.latLng).x;
+	var y = overlay.getProjection().fromLatLngToContainerPixel(event.latLng).y;
+	if (x > map.getDiv().offsetWidth - 120) { x = map.getDiv().offsetWidth - 120 }
+    if (y > map.getDiv().offsetHeight - 100) { y = map.getDiv().offsetHeight - 100 }
+	
+    marker_index_context_menu = marker.index;
+    marker_number_context_menu = marker.number;
+    
+    
+    $("#context-menu-marker").css('top',y).css('left',x).css('visibility','visible');
+    
+}
+
+function context_deletePoint(){
+	
+	$(".context-menu").css('visibility','hidden');
+	deletePoint(marker_index_context_menu, marker_number_context_menu);
+	
+}
+
+
+
+function initializePolylineMenu(){
+
+	var html = ""+
+	"<div class='context-menu' id='context-menu-polyline'>"+
+		"<div><a onclick='context_setLineLength();'>Set Line Length</a></div>"+
+	"</div>";
+	
+	$("#map").append(html);
+	
+}
+
+function polylineMenu(polyline, event){
+	
+	$(".context-menu").css('visibility','hidden');
+	
+	var x = overlay.getProjection().fromLatLngToContainerPixel(event.latLng).x;
+	var y = overlay.getProjection().fromLatLngToContainerPixel(event.latLng).y;
+	if (x > map.getDiv().offsetWidth - 120) { x = map.getDiv().offsetWidth - 120 }
+    if (y > map.getDiv().offsetHeight - 100) { y = map.getDiv().offsetHeight - 100 }
+	
+    polyline_index_context_menu = polyline.index;
+    polyline_number_context_menu = polyline.number;
+    
+    $("#context-menu-polyline").css('top',y).css('left',x).css('visibility','visible');
+    
+}
+
+function context_setLineLength(){
+	
+	$(".context-menu").css('visibility','hidden');
+	setLineLengthDialog(polyline_index_context_menu, polyline_number_context_menu);
+}
+
+
+
+function initializeSearchMarkerMenu(){
+
+	var html = ""+
+	"<div class='context-menu' id='context-menu-search-marker'>"+
+		"<div><a onclick='context_deleteSearchMarker();'>Delete Search Point</a></div>"+
+	"</div>";
+	
+	$("#map").append(html);
+	
+}
+
+
+function searchMarkerMenu(marker, event){
+	
+	$(".context-menu").css('visibility','hidden');
+	
+	var x = overlay.getProjection().fromLatLngToContainerPixel(event.latLng).x;
+	var y = overlay.getProjection().fromLatLngToContainerPixel(event.latLng).y;
+	if (x > map.getDiv().offsetWidth - 120) { x = map.getDiv().offsetWidth - 120 }
+    if (y > map.getDiv().offsetHeight - 100) { y = map.getDiv().offsetHeight - 100 }
+	    
+    $("#context-menu-search-marker").css('top',y).css('left',x).css('visibility','visible');
+    
+}
+
+function context_deleteSearchMarker(){
+	
+	$(".context-menu").css('visibility','hidden');
+	deleteSearchMarker();
+	
+}
