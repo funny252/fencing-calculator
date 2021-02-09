@@ -701,7 +701,17 @@ html, body {
 	background-color: rgb(59, 59, 59);
 	transition: all .3s;
 }
-.bottom-left-button,.bottom-right-button {
+.bottom-left-button {
+	display: flex;
+	justify-content: space-around;
+	color: white;
+	border-radius: 10px;
+	padding: 6px;
+	cursor: pointer;
+	width: 240px;
+	background: linear-gradient(#d4e74f 0%, #79ae00 100%);
+}
+.bottom-right-button {
 	display: flex;
 	justify-content: space-around;
 	border: 2px dashed #fff;
