@@ -23,7 +23,7 @@ var areaRotators = new Array(0);
 var rotatorLines = new Array(0);
 var lineColor = '#9BB653';
 var fillColor = '#00ff00';
-var lineWidth = 2;
+var lineWidth = 5;
 var lineOpacity = 1.0;
 var fillOpacity = 0.2;
 var radiansPerDegree = Math.PI / 180.0;
@@ -802,9 +802,9 @@ function display(){
         
         for (var j = 0; j < areacontainer[i].length; j++) {
         	if(areacontainer_toggle[i]=='HIDE_LABELS' || areacontainer_toggle[i]=='HIDE_NONE' /*|| id!=''*/){
-	            var marker = placeMarker(areacontainer[i][j], j, i);
-	            areaMarkers.push(marker);
-	            marker.setMap(map);
+	           // var marker = placeMarker(areacontainer[i][j], j, i);
+	            //areaMarkers.push(marker);
+	            //marker.setMap(map);
         	}
         }
         
