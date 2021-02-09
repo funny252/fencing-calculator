@@ -10,7 +10,7 @@ html, body {
 }
 #container{
 	width:100%;
-	height:100%;
+	height: 91.5%;
 	position:relative;
 	margin:0 auto;
 }
@@ -483,7 +483,7 @@ html, body {
 	border-radius: 9px; 
 	padding: 30px;	
 	border: 1px solid #707070;
-	max-height: 339px;
+	/* max-height: 339px; */
 }
 .width-zero {
 	width: 0;
@@ -536,7 +536,6 @@ html, body {
 }
 .width-1 {
 	padding: 0 40px;
-	max-height: 43px;
 }
 .mr-1 {
 	margin-right: 14px;
@@ -545,7 +544,7 @@ html, body {
 	margin-top: 18px;
 }
 .mb-1 {
-	margin-top: 14px;
+	margin-bottom: 14px;
 }
 #property {
 	border-radius: 6px;
@@ -795,15 +794,26 @@ html, body {
 	padding: 18px 25px;
 	border-radius: 10px;
 }
+.button-style-4:hover {
+	cursor: pointer;
+	background-color: rgb(207, 207, 207);
+	transition: all .2s;
+}
 .button-style-5 {
 	padding: 20px 40px;
 	border-radius: 10px;
 	background: linear-gradient(#6ee2f5 0%, #6454f0 100%);
 }
+.button-style-5:hover {
+	cursor: pointer;
+}
 .button-style-6 {
 	padding: 18px 25px;
 	border-radius: 10px;
 	background: linear-gradient(#d4e74f 0%, #79ae00 100%);
+}
+.button-style-6:hover {
+	cursor: pointer;
 }
 .bottom-window-header {
 	display: flex;
@@ -846,4 +856,86 @@ html, body {
 .collapse_selection:hover {
 	border: 2px solid rgb(22, 12, 46);
 	transition: all .1s;
+}
+.input-section-1 {
+	display: flex;
+}
+.location-2 {
+	border-radius: 6px;
+	border: 1px solid black;
+	padding-left: 10px;
+	width: 68%;
+	height: 43px;
+}
+
+
+
+
+
+
+@media screen and (max-width: 600px) {
+	#container {
+		height: 83%;
+	}
+	.button-group-1 {
+		display: flex;
+		bottom: 100px;
+		left: 10px;
+		top: auto;
+		width: 100%;
+		justify-content: center;
+	}
+	.button-group-3 {
+		bottom: 0;
+		background-color: white;
+		top: auto;
+		width: 100%;
+		right: auto;
+		display: flex;
+		justify-content: center;
+		padding: 10px;
+	}
+	.button-style-4 {
+		border: 2px dashed rgb(0, 0, 0);
+		color: #000000;
+	}
+	.button-group-2 {
+		display: none;
+	}
+	.button-1-successed {
+		margin-right: 23px;
+	}
+	.button-1 {
+		margin-right: 23px;
+	}
+	.location-section {
+		width: auto;
+		top: 137px;
+		left: 10px;
+		right: 10px;
+		
+	}
+	#location {
+		width: 100%;
+		
+	}
+	.input-section-1 {
+		display: block;
+	}
+	.location {
+		margin-bottom: 8px;
+		width: 100%;
+	}
+	.location-2 {
+		margin-bottom: 8px;
+	}
+	.buttom-3 {
+		margin-left: 0px;
+	}
+	.footer-1 {
+		justify-content: center;
+	}
+	.location-section {
+		max-height: 540px;
+	}
 }

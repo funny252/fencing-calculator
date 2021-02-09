@@ -966,12 +966,12 @@ function setSvgAction(m)
 	<div class="header-1">
 		<i class="fas fa-map-marker-alt"></i><span class="text-2">Let’s Find Your Home</span>
 	</div>
-	<div class="content-01">
-		<div class="d-flex width-1">
-			<input class="location" id="location" placeholder="What's your location?">
+	<div class="content-01 mb-1">
+		<div class="input-section-1 width-1">
+			<input class="location-2" id="location" placeholder="What's your location?">
 			<div class="buttom-3"><i class="fas fa-street-view"></i>Get My Location</div>
 		</div>
-		<div class="d-flex width-1 mt-1">
+		<div class="input-section-1 width-1 mt-1">
 			<input class="location mr-1" id="Surname" placeholder="Name Surname">
 			<input class="location mr-1" id="Phone_Number" placeholder="Phone Number">
 			<input class="location mr-1" id="Email" placeholder="Email Address">
@@ -1095,6 +1095,10 @@ function setSvgAction(m)
 		$('#pen-done').on('click', function() {
 			$('#color-section').hide(300);
 			$('#pen-btn').show(300);
+		});
+		$('#gate-done').on('click', function() {
+			$('#gate-section').hide(300);
+			$('#gate-btn').show(300);
 		});
 
 		$('#gate-btn').on('click', function() {
