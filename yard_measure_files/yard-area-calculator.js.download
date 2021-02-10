@@ -802,9 +802,9 @@ function display(){
         
         for (var j = 0; j < areacontainer[i].length; j++) {
         	if(areacontainer_toggle[i]=='HIDE_LABELS' || areacontainer_toggle[i]=='HIDE_NONE' /*|| id!=''*/){
-	           // var marker = placeMarker(areacontainer[i][j], j, i);
-	            //areaMarkers.push(marker);
-	            //marker.setMap(map);
+	            var marker = placeMarker(areacontainer[i][j], j, i);
+	            areaMarkers.push(marker);
+	            marker.setMap(map);
         	}
         }
         
