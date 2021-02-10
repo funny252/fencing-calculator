@@ -585,7 +585,7 @@ html, body {
 	margin-bottom: 10px;
 }
 .mavi {
-	background-color: yellow;
+	background-color: #27FF48;
 	width: 30px;
 	height: 30px;
 	border-radius: 50%;
@@ -593,7 +593,7 @@ html, body {
 	cursor: pointer;
 }
 .kirmizi {
-	background-color: teal;
+	background-color: #FF5858;
 	width: 30px;
 	height: 30px;
 	border-radius: 50%;
@@ -601,7 +601,7 @@ html, body {
 	cursor: pointer;
 }
 .pembe {
-	background-color: tomato;
+	background-color: #48FFEA;
 	width: 30px;
 	height: 30px;
 	border-radius: 50%;
@@ -609,7 +609,7 @@ html, body {
 	cursor: pointer;
 }
 .orange {
-	background-color: orange;
+	background-color: #3E5BBE;
 	width: 30px;
 	height: 30px;
 	border-radius: 50%;
@@ -617,7 +617,23 @@ html, body {
 	cursor: pointer;
 }
 .yesil {
-	background-color: plum;
+	background-color: #4879FF;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	margin-right: 7px;
+	cursor: pointer;
+}
+.six {
+	background-color: #FFE348;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	margin-right: 7px;
+	cursor: pointer;
+}
+.seven {
+	background-color: #D472FF;
 	width: 30px;
 	height: 30px;
 	border-radius: 50%;
@@ -867,9 +883,6 @@ html, body {
 	width: 68%;
 	height: 43px;
 }
-
-
-
 
 
 
