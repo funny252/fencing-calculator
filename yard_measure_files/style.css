@@ -657,6 +657,9 @@ html, body {
 .color-hover:hover {
 	border: 2px solid black;
 }
+.selected{
+	box-shadow: 0px 0px 9px #333;
+}
 .pen {
 	font-size: 20px;
 	color: #86b60d;
@@ -675,7 +678,7 @@ html, body {
 	padding-top: 7px;
 }
 .color-line-section {
-	padding-bottom: 15px;
+	padding: 15px 10px;
 }
 .top-section-1 {
 	max-height: 38px;
@@ -698,6 +701,10 @@ html, body {
 .left-section-gate:hover {
 	background-color: rgb(182, 182, 182);
 	transition: all .3s;
+	cursor: pointer;
+}
+.gate-selected{
+	background-color: rgb(182, 182, 182);
 	cursor: pointer;
 }
 .right-section-gate:hover {
@@ -724,7 +731,7 @@ html, body {
 	padding: 6px;
 	cursor: pointer;
 	width: 240px;
-	background: linear-gradient(#d4e74f 0%, #79ae00 100%);
+	background: rgb(119 119 119 / 39%);
 }
 .bottom-right-button {
 	display: flex;
@@ -732,7 +739,7 @@ html, body {
 	border: 2px dashed #fff;
 	color: white;
 	border-radius: 10px;
-	background-color: rgb(119 119 119 / 39%);
+	background: rgb(119 119 119 / 39%);
 	padding: 6px;
 	cursor: pointer;
 	width: 240px;
@@ -866,8 +873,11 @@ html, body {
 	border: 1px solid rgb(109, 109, 109);
 	border-radius: 6px;
 	margin: 4px;
-	width: 280px;
+	/* width: 280px; */
 	cursor: pointer;
+	background: white;
+    text-align: center;
+	padding-left: 18px;
 }
 .collapse_selection:hover {
 	border: 2px solid rgb(22, 12, 46);
@@ -885,8 +895,8 @@ html, body {
 }
 .thanks {
 	position: absolute;
-	top: 50px;
-	right: 100px;
+	top: 100px;
+	right: 5px;
 	padding: 30px;
 	text-align: center;
 	border: 1px solid black;
@@ -941,6 +951,44 @@ html, body {
 }
 .bottom-section-4 {
 	display: flex;
+}
+.price-style-1 {
+	font-size: 20px;
+	color: #7CAE20;
+}
+/* .left-sect {
+	padding: 30px;
+} */
+.right-sect {
+	padding: 30px 0 0 20px;
+}
+.toggletip {
+	display: flex;
+    flex-direction: row-reverse;
+}
+.add-button {
+	text-align: center;
+    font-size: 16px;
+    padding: 5px;
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+
+}
+.add-button:hover {
+	cursor: pointer;
+	background-color: rgb(63, 63, 63);
+	transition: all .2s;
+}
+
+.cart{
+	position: absolute;
+    right: 50px;
+    top: 550px;
+    /* width: 300px; */
+    /* max-height: 200px; */
+    overflow-y: scroll;
+    z-index: 50;
 }
 
 @media screen and (max-width: 600px) {
@@ -1008,4 +1056,92 @@ html, body {
 	.location-section {
 		max-height: 540px;
 	}
+}
+
+.gates{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	background: transparent;
+}
+
+.gate{
+	border: dashed 1px #fff;
+	padding: 20px;
+	cursor: move;
+}
+
+.outer-gate{
+	position: absolute;
+	z-index: 50;
+	padding: 15px;
+}
+
+.close-gate-btn {
+	float: right;
+    margin-top: -15px;
+    margin-right: -11px;
+	cursor: pointer;
+}
+
+.move-gate-btn {
+	background: white;
+    width: fit-content;
+    height: fit-content;
+    padding: 1px 4px;
+    border-radius: 50%;
+    top: 5px;
+    position: absolute;
+    margin-left: -10px;
+	cursor: move;
+}
+
+.selectedType, .selectedGate{
+	border: 2px solid rgb(22, 12, 46);
+    transition: all .1s;
+}
+
+.fence-part-list{
+	position: absolute;
+    right: 50px;
+    top: 200px;
+    width: 200px;
+    max-height: 200px;
+    overflow-y: scroll;
+    background: transparent;
+    z-index: 50;
+	color: white;
+}
+
+.fence-total{
+	position: absolute;
+    right: 80px;
+    top: 400px;
+    
+    max-height: 200px;
+    overflow-y: scroll;
+    background: transparent;
+    z-index: 50;
+	color: white;
+	display:flex;
+	font-size: 36px;
+}
+
+.fence-gates{
+	position: absolute;
+    right: 50px;
+    top: 500px;
+    width: 300px;
+    max-height: 200px;
+    overflow-y: scroll;
+    background: transparent;
+    z-index: 50;
+	color: white;
+	display:flex;
+	font-size: 36px;
+}
+
+
+::-webkit-scrollbar{
+	width: 2px;
 }
