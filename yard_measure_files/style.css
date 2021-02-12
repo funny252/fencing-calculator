@@ -873,7 +873,7 @@ html, body {
 	border: 1px solid rgb(109, 109, 109);
 	border-radius: 6px;
 	margin: 4px;
-	/* width: 280px; */
+	width: 280px;
 	cursor: pointer;
 	background: white;
     text-align: center;
