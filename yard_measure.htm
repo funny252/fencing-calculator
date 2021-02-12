@@ -102,6 +102,8 @@ function setStrokeColor(a, color){
 	fillColor = color;
 	$(".color-hover").removeClass("selected");
 	$(a).addClass("selected");
+	$('#pen-btn').removeClass("button-1");
+	$('#pen-btn').addClass("button-1-successed");
 }
 
 function done_location(){
@@ -123,12 +125,14 @@ function select_gate(gate_type){
 }
 
 function add_gate(){
+	var rand1 = Math.floor(Math.random()*50);
+	var rand2 = Math.floor(Math.random()*50);
 	if (gate == 1) {
-		$(".gates").append('<div class="outer-gate" style="left:' + window.screen.width / 2 + 'px; top: ' + window.screen.height / 2 + 'px;"><div class="gate" onmousedown="start_drag(this, event);"><img src="img/gate_1.png"></div><div class="close-gate-btn" onclick="remove_gate(this, 1);"><img src="img/close-gate-btn.png"></div></div>');
+		$(".gates").append('<div class="outer-gate" style="left:' + (window.screen.width / 2 + rand1 - 600) + 'px; top: ' + (window.screen.height / 2 + rand2) + 'px;"><div class="gate" onmousedown="start_drag(this, event);"><img src="img/gate_1.png"></div><div class="close-gate-btn" onclick="remove_gate(this, 1);"><img src="img/close-gate-btn.png"></div></div>');
 		single_gates ++;
 	}
 	if(gate == 2) {
-		$(".gates").append('<div class="outer-gate" style="left:' + window.screen.width / 2 + 'px; top: ' + window.screen.height / 2 + 'px;"><div class="gate" onmousedown="start_drag(this, event);"><img src="img/gate_2.png"></div><div class="close-gate-btn" onclick="remove_gate(this, 2);"><img src="img/close-gate-btn.png"></div></div>');
+		$(".gates").append('<div class="outer-gate" style="left:' + (window.screen.width / 2 + rand1 -600) + 'px; top: ' + (window.screen.height / 2 + rand2) + 'px;"><div class="gate" onmousedown="start_drag(this, event);"><img src="img/gate_2.png"></div><div class="close-gate-btn" onclick="remove_gate(this, 2);"><img src="img/close-gate-btn.png"></div></div>');
 		double_gates ++;
 	}
 	let ht = "";
@@ -2616,7 +2620,10 @@ function deleteSearchMarker(){
 			{"type": "chink", loadedCost: 310, "label": "Chain Link", "img": "chainlink.png"}, 
 			{"type": "metal", loadedCost: 210, "label": "Metal", "img": "metal.png"} ];
 			
-		var gateTypes = [{"uuid": "012010120", "label": "Chain Link 5' Gate", "img": "https://cdn2.bigcommerce.com/server3800/28117/products/1281/images/2720/DogAccessGatenotext__83058.1578336554.1280.1280.jpg?c=2"} ];
+		var gateTypes = [{"uuid": "012010120", "label": "Chain Link 5' Gate", "img": "https://cdn2.bigcommerce.com/server3800/28117/products/1281/images/2720/DogAccessGatenotext__83058.1578336554.1280.1280.jpg?c=2", "retailPrice":50},
+		{"uuid": "012010121", "label": "Chain Link 5' Gate", "img": "https://images.homedepot-static.com/productImages/545dd536-c0fd-4868-88d2-dc0d30707087/svn/white-veranda-vinyl-fence-gates-181972-64_1000.jpg?c=2", "retailPrice":150},
+		{"uuid": "012010122", "label": "Chain Link 5' Gate", "img": "https://cdn2.bigcommerce.com/server3800/28117/products/1281/images/2720/DogAccessGatenotext__83058.1578336554.1280.1280.jpg?c=2", "retailPrice":50},
+		{"uuid": "012010123", "label": "Chain Link 5' Gate", "img": "https://cdn2.bigcommerce.com/server3800/28117/products/1281/images/2720/DogAccessGatenotext__83058.1578336554.1280.1280.jpg?c=2", "retailPrice":50}];
 	
 		fenceTypes = [
 			{"uuid":"03cb6b933e9440a9903f52c86779e48e","name":"Alum gate","barcode":"","productLineDesc":"","units":"0","priceLevel":"0","category":"Gate","model":"","make":"US Door \u0026 Fence","taxType":"all","vendorName":"","currentCount":0,"cost":0.00,"retailPrice":0.00,"notExhaustable":false,"customField1":"","customField2":"","customField4":"","customField5":"","uuidLocation":"","descript":"","enabled":true,"installationCost":0.00,"width":0.0000,"height":0.0000,"weight":0.0000,"mapPlaceable":false,"territory":"","createUserId":"jdubin","updateUserId":"jdubin","createUserUuid":"71590418a3cc43b0b4fc29f5e86d6868","updateUserUuid":"71590418a3cc43b0b4fc29f5e86d6868","createTime":"Nov 19, 2020 4:53:09 PM","updateTime":"Nov 19, 2020 4:53:09 PM"},
@@ -2625,7 +2632,7 @@ function deleteSearchMarker(){
 			{"uuid":"34e7049869e347e2a7a15d000fed4435","name":"Aluminum ","barcode":" ","productLineDesc":" ","units":"0","priceLevel":"0","category":"Fence","model":"","make":"US Door \u0026 Fence","taxType":"all","vendorName":"","currentCount":0,"cost":66.00,"retailPrice":163.00,"notExhaustable":false,"customField1":" ","customField2":"","customField4":"","customField5":"https://images.homedepot-static.com/productImages/31708b4e-584d-44e7-b22f-927d28f16979/svn/black-us-door-fence-metal-fence-panels-f2ghds93x58us-64_1000.jpg","uuidLocation":"","descript":" ","enabled":true,"installationCost":0.00,"width":0.0000,"height":0.0000,"weight":0.0000,"mapPlaceable":true,"territory":"","createUserId":"jdubin","updateUserId":"jdubin","createUserUuid":"71590418a3cc43b0b4fc29f5e86d6868","updateUserUuid":"71590418a3cc43b0b4fc29f5e86d6868","createTime":"Sep 25, 2020 8:47:33 AM","updateTime":"Sep 27, 2020 12:36:50 PM"},
 			{"uuid":"4ee7be97a30e461ab3fc69f2c9bc9917","name":"Wood","barcode":" ","productLineDesc":" ","units":"0","priceLevel":"0","category":"Fence","model":"","make":"","taxType":"all","vendorName":"","currentCount":0,"cost":12.00,"retailPrice":28.00,"notExhaustable":false,"customField1":" ","customField2":"","customField4":"","customField5":"https://images.homedepot-static.com/productImages/7b5043ef-4074-4987-9192-c4aa301483de/svn/wood-fence-panels-07635-64_1000.jpg","uuidLocation":"","descript":" ","enabled":true,"installationCost":0.00,"width":0.0000,"height":0.0000,"weight":0.0000,"mapPlaceable":true,"territory":"","createUserId":"jdubin","updateUserId":"jdubin","createUserUuid":"71590418a3cc43b0b4fc29f5e86d6868","updateUserUuid":"71590418a3cc43b0b4fc29f5e86d6868","createTime":"Feb 6, 2020 11:56:41 AM","updateTime":"Sep 27, 2020 12:36:33 PM"},
 			{"uuid":"5539236986094770b606ae4c91f78d1b","name":"Chain Link","barcode":" ","productLineDesc":" ","units":"0","priceLevel":"0","category":"Fence","model":"","make":"","taxType":"all","vendorName":"","currentCount":0,"cost":8.00,"retailPrice":17.00,"notExhaustable":false,"customField1":" ","customField2":"","customField4":"","customField5":"https://images.homedepot-static.com/productImages/3989134f-07fc-4ed1-908f-338c6c77ef37/svn/everbilt-chain-link-fence-gates-3283adj48eb-64_1000.jpg","uuidLocation":"","descript":" ","enabled":true,"loadedCost":10.00,"installationCost":2.00,"width":0.0000,"height":0.0000,"weight":0.0000,"mapPlaceable":true,"territory":"","createUserId":"jdubin","updateUserId":"jdubin","createUserUuid":"71590418a3cc43b0b4fc29f5e86d6868","updateUserUuid":"71590418a3cc43b0b4fc29f5e86d6868","createTime":"Sep 25, 2020 9:33:07 AM","updateTime":"Sep 27, 2020 12:37:03 PM"},
-			{"uuid":"770495095b624afe8ed683b92bf3e988","name":"3-1/2 ft. W x 6 ft. H White Vinyl Lewiston Lattice Top Fence Gate","barcode":" ","productLineDesc":" ","units":"0","priceLevel":"0","category":"Gate","model":"","make":"","taxType":"all","vendorName":"","currentCount":0,"cost":188.18,"retailPrice":275.00,"notExhaustable":false,"customField1":" ","customField2":"","customField4":"","customField5":"https://images.homedepot-static.com/productImages/545dd536-c0fd-4868-88d2-dc0d30707087/svn/white-veranda-vinyl-fence-gates-181972-64_1000.jpg","uuidLocation":"","descript":" ","enabled":true,"installationCost":0.00,"width":0.0000,"height":0.0000,"weight":0.0000,"mapPlaceable":true,"territory":"","createUserId":"jdubin","updateUserId":"jdubin","createUserUuid":"71590418a3cc43b0b4fc29f5e86d6868","updateUserUuid":"71590418a3cc43b0b4fc29f5e86d6868","createTime":"Sep 25, 2020 9:39:09 AM","updateTime":"Sep 27, 2020 8:37:16 AM"},{"uuid":"cb6d2fdbde6741dda82e998cb54f6e0b","name":"45 in. x 68 in. Diamond Tipped Gate Door with Arched External Rail for 48 in. Openings (Hardware included)","barcode":" ","productLineDesc":" ","units":"0","priceLevel":"0","category":"Gate","model":"","make":"NUVO","taxType":"all","vendorName":"","currentCount":0,"cost":239.89,"retailPrice":400.00,"notExhaustable":false,"customField1":" ","customField2":"","customField4":"","customField5":"https://images.homedepot-static.com/productImages/b68807c6-d502-47f3-8cbc-ccdce405f9cd/svn/nuvo-iron-metal-fence-gates-dgi0141-64_1000.jpg","uuidLocation":"","descript":" ","enabled":true,"installationCost":0.00,"width":0.0000,"height":0.0000,"weight":0.0000,"mapPlaceable":true,"territory":"","createUserId":"jdubin","updateUserId":"jdubin","createUserUuid":"71590418a3cc43b0b4fc29f5e86d6868","updateUserUuid":"71590418a3cc43b0b4fc29f5e86d6868","createTime":"Sep 25, 2020 9:00:55 AM","updateTime":"Sep 27, 2020 8:31:56 AM"},{"uuid":"d72934ef9bbb47df9508fb1bb0453ca2","name":"42 in. W x 48 in. H Galvanized Steel Bent Frame Walk-Through Chain Link Fence Gate","barcode":"","productLineDesc":"","units":"0","priceLevel":"0","category":"Gate","model":"","make":"YardGuard","taxType":"all","vendorName":"","currentCount":0,"cost":59.72,"retailPrice":150.00,"notExhaustable":false,"customField1":"","customField2":"","customField4":"","customField5":"https://images.homedepot-static.com/productImages/69fb6bbd-2b98-4a47-b1fc-d90822d46e77/svn/yardgard-chain-link-fence-gates-328302a-64_1000.jpg","uuidLocation":"","descript":"","enabled":true,"installationCost":0.00,"width":0.0000,"height":0.0000,"weight":0.0000,"mapPlaceable":true,"territory":"","createUserId":"jdubin","updateUserId":"jdubin","createUserUuid":"71590418a3cc43b0b4fc29f5e86d6868","updateUserUuid":"71590418a3cc43b0b4fc29f5e86d6868","createTime":"Sep 27, 2020 8:35:24 AM","updateTime":"Sep 27, 2020 8:35:24 AM"}];
+			{"uuid":"770495095b624afe8ed683b92bf3e988","name":"White Vinyl Lewiston Lattice","barcode":" ","productLineDesc":" ","units":"0","priceLevel":"0","category":"Gate","model":"","make":"","taxType":"all","vendorName":"","currentCount":0,"cost":188.18,"retailPrice":275.00,"notExhaustable":false,"customField1":" ","customField2":"","customField4":"","customField5":"https://images.homedepot-static.com/productImages/545dd536-c0fd-4868-88d2-dc0d30707087/svn/white-veranda-vinyl-fence-gates-181972-64_1000.jpg","uuidLocation":"","descript":" ","enabled":true,"installationCost":0.00,"width":0.0000,"height":0.0000,"weight":0.0000,"mapPlaceable":true,"territory":"","createUserId":"jdubin","updateUserId":"jdubin","createUserUuid":"71590418a3cc43b0b4fc29f5e86d6868","updateUserUuid":"71590418a3cc43b0b4fc29f5e86d6868","createTime":"Sep 25, 2020 9:39:09 AM","updateTime":"Sep 27, 2020 8:37:16 AM"},{"uuid":"cb6d2fdbde6741dda82e998cb54f6e0b","name":"45 in. x 68 in. Diamond Tipped Gate Door with Arched External Rail for 48 in. Openings (Hardware included)","barcode":" ","productLineDesc":" ","units":"0","priceLevel":"0","category":"Gate","model":"","make":"NUVO","taxType":"all","vendorName":"","currentCount":0,"cost":239.89,"retailPrice":400.00,"notExhaustable":false,"customField1":" ","customField2":"","customField4":"","customField5":"https://images.homedepot-static.com/productImages/b68807c6-d502-47f3-8cbc-ccdce405f9cd/svn/nuvo-iron-metal-fence-gates-dgi0141-64_1000.jpg","uuidLocation":"","descript":" ","enabled":true,"installationCost":0.00,"width":0.0000,"height":0.0000,"weight":0.0000,"mapPlaceable":true,"territory":"","createUserId":"jdubin","updateUserId":"jdubin","createUserUuid":"71590418a3cc43b0b4fc29f5e86d6868","updateUserUuid":"71590418a3cc43b0b4fc29f5e86d6868","createTime":"Sep 25, 2020 9:00:55 AM","updateTime":"Sep 27, 2020 8:31:56 AM"},{"uuid":"d72934ef9bbb47df9508fb1bb0453ca2","name":"42 in. W x 48 in. H Galvanized Steel Bent Frame Walk-Through Chain Link Fence Gate","barcode":"","productLineDesc":"","units":"0","priceLevel":"0","category":"Gate","model":"","make":"YardGuard","taxType":"all","vendorName":"","currentCount":0,"cost":59.72,"retailPrice":150.00,"notExhaustable":false,"customField1":"","customField2":"","customField4":"","customField5":"https://images.homedepot-static.com/productImages/69fb6bbd-2b98-4a47-b1fc-d90822d46e77/svn/yardgard-chain-link-fence-gates-328302a-64_1000.jpg","uuidLocation":"","descript":"","enabled":true,"installationCost":0.00,"width":0.0000,"height":0.0000,"weight":0.0000,"mapPlaceable":true,"territory":"","createUserId":"jdubin","updateUserId":"jdubin","createUserUuid":"71590418a3cc43b0b4fc29f5e86d6868","updateUserUuid":"71590418a3cc43b0b4fc29f5e86d6868","createTime":"Sep 27, 2020 8:35:24 AM","updateTime":"Sep 27, 2020 8:35:24 AM"}];
 	
 	
 		
@@ -2660,6 +2667,25 @@ function deleteSearchMarker(){
 			else
 				html += "<img width='150' height='150' src='/sunbase/addons/measure/img/wood.png'><br/>" + fenceTypes[i].name + "<br/>";
 			html += "<input type='radio' style='display:none' name='field_type' value='" + fenceTypes[i].uuid + "' class='rbEntry'/>";
+			html += "</label>";
+			html += "</div></div></div>";
+			$(".cart").append(html);
+		}
+
+		function addToCartGate(uuid, i){
+			let html = `
+				<div class="collapse_selection open-addfield-fielddatarow pref-panel-style-selection-container">
+					<div class="panel-item collapsible clearfix " id="` + uuid + `_cart" onclick="selectItem('` + uuid + `')" style="margin-right: 37px; margin-bottom: 10px;">
+						<label class="toggletip tipped">
+							<div class="right-sect">
+							<p>` + gateTypes[i].retailPrice + `</p>							
+							<div class="add-button" onclick="removeItem(this.parentNode.parentNode.parentNode);">Cancel</div></div><div class="left-sect">`;
+			let website = gateTypes[i].img;
+			if ( website && website.length > 0 )
+				html += "<img width='100' height='100' src='" + website + "'><br/>" + gateTypes[i].label + "<br/>";
+			else
+				html += "<img width='150' height='150' src='/sunbase/addons/measure/img/wood.png'><br/>" + gateTypes[i].label + "<br/>";
+			html += "<input type='radio' style='display:none' name='field_type' value='" + gateTypes[i].uuid + "' class='rbEntry'/>";
 			html += "</label>";
 			html += "</div></div></div>";
 			$(".cart").append(html);
@@ -2722,10 +2748,62 @@ function deleteSearchMarker(){
 	
 			// $.prompt(statesdemo);
 		}
-	
-	
+
 		var gateType = '';
 		var gateDblType = '';
+	
+		function setGatesStyle()
+		{
+					
+			var html = "<div style='text-align:center; overflow-x: auto; overflow-y:hidden; height:350px'> <div class='d-flex' style='margin-right:0; text-align:center'>";
+			var idx = 0;
+			for ( var i = 0; i < gateTypes.length; ++i )
+			{
+				// if ( gateTypes[i].category === 'Fence' )
+				// {
+					if ( idx > 0 && idx % 4 == 0 )
+					{
+						if ( idx > 0 )
+							html += "</div>";
+						html += "<div class='row' style='margin-right:0; text-align:center'>";
+					}
+					++idx;
+					html += "<div class='collapse_selection open-addfield-fielddatarow pref-panel-style-selection-container'>";
+					html += "<div class='panel-item collapsible clearfix " + ( gateType === gateTypes[i].uuid ? 'selectedType' : '') + "' id='" + gateTypes[i].uuid + "_item' onclick='selectItem(\"" + gateTypes[i].uuid + "\")' style='margin-right: 20px;'>";
+					html += "<label class='toggletip tipped'>";
+					html += "<div class='right-sect'>" + "<p class='price-style-1'>"+ "$" + + gateTypes[i].retailPrice + "</p>" 
+					html += '<div class="add-button" onclick="addToCartGate(\''+ gateTypes[i].uuid +'\', ' + i + ');">Add Busket</div>' +  "</div>" + "<div class='left-sect'>"
+						
+					
+						var website = gateTypes[i].img;
+						if ( website && website.length > 0 )
+							html += "<img width='100' height='130' src='" + website + "'><br/>" + gateTypes[i].label + "<br/>";
+						else
+							html += "<img width='150' height='150' src='/sunbase/addons/measure/img/wood.png'><br/>" + gateTypes[i].label + "<br/>";
+						html += "<input type='radio' style='display:none' name='field_type' value='" + gateTypes[i].uuid + "' class='rbEntry'/>";
+					html += "</label>";
+					html += "</div></div></div>";			
+				// }
+			}
+			html += "</div></div>";	
+			
+			// console.log( html );
+			
+			$("#content-3").append(html);
+			// var statesdemo = {
+			// 	state1: {
+			// 		title: '<b>Select Fence Style<b>',
+			// 		html: html,
+			// 		buttons: { "Cancel": 0 },
+			// 		submit:function(e,v,m,f){								
+			// 			e.preventDefault();
+			// 			$.prompt.close();
+			// 		}
+			// 	}
+			// };
+	
+			// $.prompt(statesdemo);
+		}
 		
 		function selectGate(key, type)
 		{
@@ -3446,17 +3524,23 @@ function setSvgAction(m)
 	</div>
 </div>
 <div class="gates"></div>
-<div class="button-group-2">
-	<div class="bottom-left-button mr-1 " id="bottom-btn-1" onclick="setFenceStyle(); return false">
+<div class="button-group-2" id="glass-window">
+	<div class="bottom-left-button mb-1 mr-1" id="bottom-btn-1" onclick="setFenceStyle(); return false">
 		<img src="img/fence-1.png">
 		<p>SELECT<br>FENCING TYPE</p>
 		<div class="plus"><i class="fas fa-plus"></i></div>
 	</div>
-	<div class="bottom-right-button" id="bottom-btn-2">
+	<div class="bottom-right-button mb-1 mr-1" id="bottom-btn-2" onclick="setGatesStyle(); return false">
 		<img src="img/fence-2.png">
 		<p>SELECT<br>GATE TYPE</p>
 		<div class="plus"><i class="fas fa-plus"></i></div>
 	</div>
+	
+	<div class="fence-part-list"></div>
+	<div class="fence-total"></div>
+	<div class="fence-gates"></div>
+	<div class="cart"></div>
+	
 </div>
 <div class="button-group-3">
 	<div class="button-style-4 mr-1" onclick="location.reload();">Reset plan</div>
@@ -3478,7 +3562,6 @@ function setSvgAction(m)
 		<div class="jqiclose" id="close-btn2">×</div>
 	</div>
 	<div class="content-3" id="content-3">
-		<div class="d-flex" style="margin-right:0; text-align:center"><div class="col-md-3 collapse_selection open-addfield-fielddatarow pref-panel-style-selection-container"><div class="panel-item collapsible clearfix " id="770495095b624afe8ed683b92bf3e988_item" onclick="selectGate(&quot;770495095b624afe8ed683b92bf3e988&quot;,&quot;1&quot;)" style="margin-right: 20px;"><label class="toggletip tipped" '.=""><label class="toggletip tipped"><p>275</p><div class="add-button" onclick="addToCart('770495095b624afe8ed683b92bf3e988_cart', 6);">Add Busket</div><img width="150" height="150" src="https://images.homedepot-static.com/productImages/545dd536-c0fd-4868-88d2-dc0d30707087/svn/white-veranda-vinyl-fence-gates-181972-64_1000.jpg"><br><input type="radio" style="display:none" name="field_type" value="770495095b624afe8ed683b92bf3e988" class="rbEntry"><strong class="panel-item-title"></strong></label></div></div></div>
 	</div>
 </div>
 <div class="location-section" id="location-section" style="display:none">
@@ -3511,10 +3594,10 @@ function setSvgAction(m)
 		<div class="button-4 black-button" id="done" onclick="done_location();$('#location-btn').click();">Done</div>
 	</div>
 </div>
-<div class="fence-part-list"></div>
-<div class="fence-total"></div>
-<div class="fence-gates"></div>
-<div class="cart"></div>
+<div class="fence-part-list" id="number"></div>
+<div class="fence-total" id="number"></div>
+<div class="fence-gates" id="number"></div>
+<div class="cart" id="number"></div>
 <div class="thanks" style="display:none;">
 	<div class="top-section-4">
 		<img src="img/check.png">
@@ -3617,6 +3700,10 @@ function setSvgAction(m)
 			</div>
 		</div>
 	</div>
+	<div class="button-group-8">
+		<div class="button-style-9" id="btn-style-9"><i class="fas fa-cogs"></i></div>
+		<div class="button-style-10" id="btn-style-10" onclick="setDrawSubSvgAction(&quot;deleteLast&quot;); deleteLastPoint(areacontainer_current)"><i class="fas fa-backspace"></i></div>
+	</div>
 	<script>
 		$('#location-btn').on('click', function() {
 			$('#color-section').hide();
@@ -3624,6 +3711,14 @@ function setSvgAction(m)
 			$('#pen-btn').show();
 			$('#gate-btn').show(300);
 			$('#location-section').animate({ width: 'toggle'});
+			
+		});
+		$('#btn-style-9').on('click', function() {
+			$('#color-section').hide();
+			$('#gate-section').hide(300);
+			// $('#glass-window').show();
+			// $('#gate-btn').show(300);
+			$('#glass-window').toggle();
 		});
 
 		$('#pen-btn').on('click', function() {
@@ -3632,15 +3727,44 @@ function setSvgAction(m)
 			$('#gate-section').hide(300);
 			$('#color-section').show(300);
 			$('#gate-btn').show(300);
+			if ($(document).width() <= 600) {
+				$('#location-btn').css("display", "none");
+				console.log('#pen-btn');
+				
+				$('#gate-btn').css("display", "none");
+				// $('#pen-btn').show();
+				// $('#gate-btn').show(300);
+				
+			}
 		});
 
 		$('#pen-done').on('click', function() {
 			$('#color-section').hide(300);
 			$('#pen-btn').show(300);
+			if ($(document).width() <= 600) {
+				$('#location-btn').css("display", "block");
+				console.log('#pen-btn');
+				
+				$('#gate-btn').css("display", "block");
+				// $('#pen-btn').show();
+				// $('#gate-btn').show(300);
+				
+			}
 		});
 		$('#gate-done').on('click', function() {
+			$('#gate-btn').removeClass("button-1");
+			$('#gate-btn').addClass("button-1-successed");
 			$('#gate-section').hide(300);
 			$('#gate-btn').show(300);
+			if ($(document).width() <= 600) {
+				$('#location-btn').css("display", "block");
+				console.log('#pen-btn');
+				
+				$('#pen-btn').css("display", "block");
+				// $('#pen-btn').show();
+				// $('#gate-btn').show(300);
+				
+			}
 		});
 
 		$('#gate-btn').on('click', function() {
@@ -3649,12 +3773,21 @@ function setSvgAction(m)
 			$('#gate-btn').hide(300);
 			$('#pen-btn').show(300);
 			$('#gate-section').toggle(300);
+			if ($(document).width() <= 600) {
+				$('#location-btn').css("display", "none");
+				console.log('#pen-btn');
+				
+				$('#pen-btn').css("display", "none");
+				// $('#pen-btn').show();
+				// $('#gate-btn').show(300);
+				
+			}
 		});
 
 		$("#bottom-btn-1").on('click', function() {
 			var $el = $('#bottom-btn-1').parent();
 			var bottom = $(window).height() - $el.offset().top - $el.height();
-			if(bottom === 250 && $("#bottom-window-2").css("display") === 'none') {
+			if(bottom > 200 && $("#bottom-window-2").css("display") === 'none') {
 				$(this).parent().animate({bottom: 30});
 			} else {
 				$(this).parent().animate({bottom: 250});
@@ -3665,7 +3798,7 @@ function setSvgAction(m)
 		$("#bottom-btn-2").on('click', function() {
 			var $el = $('#bottom-btn-2').parent();
 			var bottom = $(window).height() - $el.offset().top - $el.height();
-			if(bottom === 250 && $("#bottom-window").css("display") === 'none') {
+			if(bottom > 200 && $("#bottom-window").css("display") === 'none') {
 				$(this).parent().animate({bottom: 30});
 			} else {
 				$(this).parent().animate({bottom: 250});
@@ -3681,6 +3814,20 @@ function setSvgAction(m)
 			$("#bottom-btn-2").parent().animate({bottom: 30});
 			$(this).closest('div.bottom-window-2').slideUp(400);
 		});
+
+		
+		if (window.screen.width <= 600) {
+			$('#location-btn').on('click', function() {
+				$('#pen-btn').css("display", "none");
+				console.log('#pen-btn');
+				
+				$('#gate-section').css("display", "none");
+				// $('#pen-btn').show();
+				// $('#gate-btn').show(300);
+				$('#location-section').animate({ width: 'toggle'});
+			});
+		}
+
 	</script>
 	
 
